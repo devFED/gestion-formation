@@ -1,0 +1,12 @@
+{
+    "require": {
+        "illuminate/database": "^5.2",
+        "rakit/validation": "^0.14.0",
+        "zeus/session": "^1.1"
+    },
+    "autoload": {
+      "classmap": [
+        "app/models"
+      ]
+    }
+}
