@@ -5,6 +5,7 @@ namespace Rakit\Validation;
 class MimeTypeGuesser
 {
 
+    /** @var array */
     protected $mimeTypes = [
         'application/andrew-inset' => 'ez',
         'application/applixware' => 'aw',
@@ -598,6 +599,7 @@ class MimeTypeGuesser
         'audio/adpcm' => 'adp',
         'audio/basic' => 'au',
         'audio/midi' => 'mid',
+        'audio/mp3' => 'mp3',
         'audio/mp4' => 'mp4a',
         'audio/mpeg' => 'mpga',
         'audio/ogg' => 'oga',
@@ -777,15 +779,26 @@ class MimeTypeGuesser
         'x-conference/x-cooltalk' => 'ice'
     ];
 
-    public function getExtension($mimeType)
+    /**
+     * Get extension by mime type
+     *
+     * @param string $mimeType
+     * @return string|null
+     */
+    public function getExtension(string $mimeType)
     {
         return isset($this->mimeTypes[$mimeType])? $this->mimeTypes[$mimeType] : null;
     }
 
-    public function getMimeType($extension)
+    /**
+     * Get mime type by extension
+     *
+     * @param string $extension
+     * @return string|null
+     */
+    public function getMimeType(string $extension)
     {
         $key = array_search($extension, $this->mimeTypes);
         return $key ?: null;
     }
-
 }
