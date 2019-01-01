@@ -65,7 +65,38 @@ class UserController extends Controller
 
 	public function update($id)
 	{
-		echo 'update';
+		if(serverMethod() != 'POST') {
+			redirect('user/index');
+		}
+		// Rules 
+		$rules = [
+		    'username'          => 'required|min:3|max:20',
+		    'email'             => 'required|email',
+		    'password'			=> 'required|min:6',
+		    'confirm_password' 	=> 'required|same:password',
+		    'createdAt' 	    => 'required|date'
+		];
+
+		// Validate request
+		$validator = new Validator;
+		$validation = $validator->validate($_POST, $rules);
+		if($validation->fails()) {
+		    $errors = $validation->errors()->firstOfAll();
+		    $user = $this->model->find($id);
+			if($user) {
+				return $this->view('users/edit', ['user' => $user, 'errors' => $errors]);
+			}
+		} else {
+		    $user = $this->model;
+		    $user->id = $id; 
+			$user->username = $_POST['username'];
+			$user->email = $_POST['email'];
+			$user->password = $_POST['password'];
+			$user->createdAt = $_POST['createdAt'];
+			$user->update();
+
+			redirect('user/index');
+		}
 	}
 
 	public function delete($id)
@@ -73,4 +104,5 @@ class UserController extends Controller
 		$user = $this->model->delete($id);
 		return redirect('user/index');
 	}
+
 }

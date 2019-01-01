@@ -6,7 +6,7 @@
 		<div class="card">
 			<div class="card-header">Edit User</div>
 			<div class="card-body">
-				<form action="<?= route('user/update' . $data['user']->id) ?>" method="post">
+				<form action="<?= route('user/update/' . $data['user']->id) ?>" method="post">
 					<div class="form-group">
 						<label for="username">UserName</label>
 						<input type="text" name="username" class="form-control <?= isset($data['errors']['username']) ? 'is-invalid' : '' ?>" placeholder="UserName" value="<?= old('username', $data['user']->username) ?>">  
@@ -23,14 +23,14 @@
 					<?php endif ?>
 					<div class="form-group <?= $data['errors']['password'] ? 'has-error' : '' ?>">
 						<label for="password">Password</label>
-						<input type="password" name="password" class="form-control <?= isset($data['errors']['password']) ? 'is-invalid' : '' ?>" placeholder="password">
+						<input type="password" name="password" class="form-control <?= isset($data['errors']['password']) ? 'is-invalid' : '' ?>" placeholder="password" value="<?= old('password', $data['user']->password) ?>">
 						<?php if (isset($data['errors']['password'])): ?>
 							<small class="invalid-feedback"><?= $data['errors']['password'] ?></small>
 						<?php endif ?>
 					</div>
 					<div class="form-group <?= $data['errors']['confirm_password'] ? 'has-error' : '' ?>">
 						<label for="confirm_password">Password</label>
-						<input type="password" name="confirm_password" class="form-control <?= isset($data['errors']['confirm_password']) ? 'is-invalid' : '' ?>" placeholder="confirm_password">
+						<input type="password" name="confirm_password" class="form-control <?= isset($data['errors']['confirm_password']) ? 'is-invalid' : '' ?>" placeholder="confirm_password" value="<?= old('confirm_password', $data['user']->password) ?>">
 						<?php if (isset($data['errors']['confirm_password'])): ?>
 							<small class="invalid-feedback"><?= $data['errors']['confirm_password'] ?></small>
 						<?php endif ?>

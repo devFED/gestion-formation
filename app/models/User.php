@@ -41,6 +41,13 @@ class User
 		return setData($sql, $params);
 	}
 
+	public function update()
+	{
+		$sql = "UPDATE {$this->table} SET username = :username, email = :email, password = :password, created_at = :created_at WHERE id = :id";
+		$params = ['id' => $this->id, 'username' => $this->username, 'email' => $this->email, 'password' => $this->password, 'created_at' => $this->createdAt];
+		return setData($sql, $params);
+	}
+
 	public function delete($id)
 	{
 		$sql = "DELETE FROM {$this->table} WHERE id = :id";
