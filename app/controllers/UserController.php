@@ -56,7 +56,11 @@ class UserController extends Controller
 
 	public function edit($id)
 	{
-		echo 'edit user :' . $id;
+		$user = $this->model->find($id);
+		if($user) {
+			return $this->view('users/edit', ['user' => $user]);
+		}
+		return redirect('user/index');
 	}
 
 	public function update($id)
@@ -66,6 +70,7 @@ class UserController extends Controller
 
 	public function delete($id)
 	{
-		echo 'edit user :' . $id;
+		$user = $this->model->delete($id);
+		return redirect('user/index');
 	}
 }

@@ -31,3 +31,8 @@
 	{
 		return $_SERVER['REQUEST_METHOD'];
 	}
+
+	function asset($asset)
+	{
+		return WEBROOT . $asset;
+	}

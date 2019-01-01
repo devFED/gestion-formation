@@ -3,5 +3,6 @@
     "description": "$validation = $validator->validate($inputs, $rules);",
     "require": {
         "rakit/validation": "^1.1"
+        // dir cmd+o
     }
 }

@@ -14,7 +14,7 @@
         global $pdo;
         $stmt = $pdo->prepare($req);
         $stmt->execute($params);
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $data = $stmt->fetch(PDO::FETCH_OBJ);
         return $data;
     }
 
