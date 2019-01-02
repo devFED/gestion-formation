@@ -54,4 +54,9 @@ class User
 		return setData($sql, ['id' => $id]);
 	}
 	
-}
+	public function findByKeyWord($keyword)
+	{
+		$sql = "SELECT * FROM {$this->table} WHERE username LIKE concat('%', :username, '%') OR email LIKE concat('%', :email, '%')";
+		return getDatas($sql, ['username' => $keyword, 'email' => $keyword]);
+	}
+} 

@@ -6,7 +6,15 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit7377fc99893d52ac8174215fe3090cdc
 {
+    public static $files = array (
+        '6157b075b923803e5ef157aeb43b83bd' => __DIR__ . '/..' . '/tamtamchik/simple-flash/src/function.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'Tamtamchik\\SimpleFlash\\' => 23,
+        ),
         'R' => 
         array (
             'Rakit\\Validation\\' => 17,
@@ -14,6 +22,10 @@ class ComposerStaticInit7377fc99893d52ac8174215fe3090cdc
     );
 
     public static $prefixDirsPsr4 = array (
+        'Tamtamchik\\SimpleFlash\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tamtamchik/simple-flash/src',
+        ),
         'Rakit\\Validation\\' => 
         array (
             0 => __DIR__ . '/..' . '/rakit/validation/src',

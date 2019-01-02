@@ -1,6 +1,7 @@
 <?php
 
 use Rakit\Validation\Validator;
+use Tamtamchik\SimpleFlash\Flash;
 
 class UserController extends Controller
 {
@@ -48,9 +49,12 @@ class UserController extends Controller
 			$user->email = $_POST['email'];
 			$user->password = $_POST['password'];
 			$user->createdAt = $_POST['createdAt'];
-			$user->save();
-
-			redirect('user/index');
+			if(!$user->save()) {
+				Flash::message('Error !', 'error');
+				redirect('user/index');
+			}
+			Flash::message('User ' . $_POST['username'] . ' was added successfully !', 'success');
+			redirect('user/index'); 
 		}
 	}
 
@@ -93,16 +97,37 @@ class UserController extends Controller
 			$user->email = $_POST['email'];
 			$user->password = $_POST['password'];
 			$user->createdAt = $_POST['createdAt'];
-			$user->update();
 
-			redirect('user/index');
+			if(!$user->update()) {
+				Flash::message('Error !', 'error');
+				redirect('user/index');
+			}
+		    Flash::message('User ' . $_POST['username'] . ' was updated successfully !', 'success');
+		    redirect('user/index');
 		}
 	}
 
 	public function delete($id)
 	{
-		$user = $this->model->delete($id);
-		return redirect('user/index');
+		if(serverMethod() != 'POST') {
+			redirect('user/index');
+		}
+
+		if(!$this->model->delete($id)) {
+     		Flash::message('Error !', 'error');
+			redirect('user/index');
+		}
+		Flash::message('User deleted successfully !', 'success');
+	    redirect('user/index'); 
 	}
 
+	public function searche()
+	{ 
+		if(serverMethod() != 'POST' || !isset($_POST['keyword']) || empty($_POST['keyword'])) {
+			redirect('user/index');
+		}
+
+		$users = $this->model->findByKeyWord($_POST['keyword']);
+		return $this->view('users/index', ['users' => $users]);
+	}
 }

@@ -10,6 +10,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= asset('css/sweetalert2/sweetalert2.min.css') ?>">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?= asset('css/custom.css') ?>">
   </head>

@@ -9,5 +9,4 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
     <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
-  </body>
-</html>
+    <script src="<?= asset('js/sweetalert2/sweetalert2.min.js') ?>"></script>

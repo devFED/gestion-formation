@@ -1,5 +1,7 @@
 <?php
 
+if(!session_id()) @session_start();
+
 require_once '../vendor/autoload.php';
 
 require_once 'config.php';
